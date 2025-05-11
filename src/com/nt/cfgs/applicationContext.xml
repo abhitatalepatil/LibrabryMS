@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- dependent spring  bean cfg -->
+  <bean id="ltime" class="java.time.LocalTime" factory-method="now"/>
+  <!-- calls Localtime.now() method to create LocalTime class obj having system time-->
+  
+  <!-- Target Spring Bean Cnfg -->
+  <bean id="wmg" class="com.nt.sbeans.WishMessageGenerator" >
+  <!--  <property name="time"  ref="ltime"/>-->
+  <constructor-arg  name="time" ref="ltime"/>
+<constructor-arg name="age" value="30"/>
+   <!-- Setter Injection to Inject LocalTime obj (ltime) to time property of WishMessageGenerator class obj (wmg) -->
+  </bean>
+              
+</beans>
